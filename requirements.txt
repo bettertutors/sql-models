@@ -1,2 +1,0 @@
-peewee==2.4.7
-psycopg2
