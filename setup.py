@@ -5,9 +5,9 @@ if __name__ == '__main__':
     setup(
         name=package_name,
         author='Samuel Marks',
-        version='0.1.2',
+        version='0.1.3',
         test_suite=package_name + '.tests',
-        packages=find_packages(),
+        packages=find_packages(exclude='*test'),
         package_dir={package_name: package_name},
         package_data={package_name: ['logging.conf']},
         install_requires=[
