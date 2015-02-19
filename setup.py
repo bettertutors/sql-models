@@ -5,9 +5,9 @@ if __name__ == '__main__':
     setup(
         name=package_name,
         author='Samuel Marks',
-        version='0.1.4',
-        test_suite=package_name + '.tests',
-        packages=find_packages(exclude='*test'),
+        version='0.1.5',
+        test_suite='test',
+        packages=filter(lambda p: p != 'test', find_packages()),  # exclude='test' doesn't work
         package_data={package_name: ['logging.conf']},
         install_requires=[
             'peewee==2.4.7',
