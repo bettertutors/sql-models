@@ -1,7 +1,7 @@
 from unittest import TestCase, main as unittest_main
 
 from bettertutors_sql_models import db
-from bettertutors_sql_models.User import User
+from bettertutors_sql_models.Signup import Signup
 
 
 row_to_dict = lambda row: {key: getattr(row, key) for key in row._meta.fields.keys()}
@@ -11,11 +11,11 @@ class TestSqlModels(TestCase):
     @classmethod
     def setUpClass(cls):
         db.connect()
-        db.create_tables([User])
+        db.create_tables([Signup])
 
     @classmethod
     def tearDownClass(cls):
-        db.drop_tables([User])
+        db.drop_tables([Signup])
         db.close()
 
     users = (
@@ -26,10 +26,10 @@ class TestSqlModels(TestCase):
     def test_create_read(self):
         for user in self.users:
             # Create user
-            User.create(**user).save()
+            Signup.create(**user).save()
 
             # Ensure user exists (with correct fields and values)
-            row_d = row_to_dict(User.select().where(User.email == user['email']).execute().next())
+            row_d = row_to_dict(Signup.select().where(Signup.email == user['email']).execute().next())
             user['registered_on'] = row_d['registered_on']
             self.assertEqual(row_d, user)
 
