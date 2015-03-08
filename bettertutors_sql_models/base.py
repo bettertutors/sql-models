@@ -1,6 +1,9 @@
-from peewee import Model
+from os import environ
 
-from __init__ import db
+from peewee import Model
+from playhouse.db_url import connect
+
+db = connect(environ['RDBMS_URI'])
 
 
 class BaseModel(Model):
