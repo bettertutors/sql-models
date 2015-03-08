@@ -1,7 +1,7 @@
 from unittest import TestCase, main as unittest_main
 
 from bettertutors_sql_models import db
-from bettertutors_sql_models.Signup import Signup
+from bettertutors_sql_models.models.Signup import Signup
 from bettertutors_sql_models.utils import row_to_dict
 from mocks import users
 

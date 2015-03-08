@@ -1,16 +1,9 @@
 from datetime import datetime
 
-from peewee import Model, CharField, DateTimeField
-from custom_fields import EmailField
+from peewee import CharField, DateTimeField
 
-from __init__ import db
-
-
-class BaseModel(Model):
-    """A base model that will use our Postgresql database"""
-
-    class Meta:
-        database = db
+from bettertutors_sql_models.base import BaseModel
+from bettertutors_sql_models.custom_fields import EmailField
 
 
 class Signup(BaseModel):
