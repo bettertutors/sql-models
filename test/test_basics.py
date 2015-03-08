@@ -10,11 +10,11 @@ class TestSqlModels(TestCase):
     @classmethod
     def setUpClass(cls):
         db.connect()
-        db.create_tables([Signup])
+        db.create_tables([Signup], safe=True)
 
     @classmethod
     def tearDownClass(cls):
-        db.drop_tables([Signup])
+        db.drop_tables([Signup], safe=True)
         db.close()
 
     users = users
