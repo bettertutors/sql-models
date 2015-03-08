@@ -2,9 +2,8 @@ from unittest import TestCase, main as unittest_main
 
 from bettertutors_sql_models import db
 from bettertutors_sql_models.Signup import Signup
-
-
-row_to_dict = lambda row: {key: getattr(row, key) for key in row._meta.fields.keys()}
+from bettertutors_sql_models.utils import row_to_dict
+from mocks import users
 
 
 class TestSqlModels(TestCase):
@@ -18,10 +17,7 @@ class TestSqlModels(TestCase):
         db.drop_tables([Signup])
         db.close()
 
-    users = (
-        {'email': u'foo@bar.com', 'institute': u'UNSW', 'role': u'tutor'},
-        {'email': u'foobar@car.com', 'institute': u'Sydney', 'role': u'tutor'}
-    )
+    users = users
 
     def test_create_read(self):
         for user in self.users:
